@@ -66,7 +66,7 @@ import org.jetbrains.compose.resources.stringResource
 import paige.navic.LocalCtx
 import paige.navic.LocalShareManager
 import paige.navic.LocalSnackbarState
-import paige.navic.data.models.Settings
+import paige.navic.data.models.settings.Settings
 import paige.navic.data.session.SessionManager
 import paige.navic.data.session.SessionManager.getCoverArtUrl
 import paige.navic.icons.Icons
