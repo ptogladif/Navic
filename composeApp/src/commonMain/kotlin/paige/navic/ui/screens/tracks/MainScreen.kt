@@ -26,8 +26,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.zt64.subsonic.api.model.Album
 import dev.zt64.subsonic.api.model.SongCollection
 import paige.navic.LocalMediaPlayer
+import paige.navic.data.models.Settings
 import paige.navic.ui.components.common.ErrorBox
 import paige.navic.ui.components.dialogs.ShareDialog
+import paige.navic.ui.components.layouts.RootBottomBar
 import paige.navic.ui.screens.tracks.components.TrackRowDropdown
 import paige.navic.ui.screens.tracks.components.TracksScreenFooterRow
 import paige.navic.ui.screens.tracks.components.TracksScreenHeadingRow
@@ -74,6 +76,11 @@ fun TracksScreen(
 					listState = viewModel.listState,
 					onSetShareId = { shareId = it }
 				)
+			},
+			bottomBar = {
+				if (Settings.shared.showBarsOnAllScreens) {
+					RootBottomBar(scrolled = viewModel.listState.lastScrolledForward)
+				}
 			}
 		) { contentPadding ->
 			PullToRefreshBox(

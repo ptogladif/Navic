@@ -86,6 +86,7 @@ import paige.navic.LocalCtx
 import paige.navic.LocalMediaPlayer
 import paige.navic.LocalNavStack
 import paige.navic.data.models.Screen
+import paige.navic.data.models.Settings
 import paige.navic.data.session.SessionManager
 import paige.navic.data.session.SessionManager.getCoverArtUrl
 import paige.navic.icons.Icons
@@ -101,6 +102,7 @@ import paige.navic.ui.components.layouts.ArtCarousel
 import paige.navic.ui.components.layouts.ArtCarouselItem
 import paige.navic.ui.components.layouts.ArtGridItem
 import paige.navic.ui.components.layouts.NestedTopBar
+import paige.navic.ui.components.layouts.RootBottomBar
 import paige.navic.ui.components.layouts.TopBarButton
 import paige.navic.ui.viewmodels.ArtistState
 import paige.navic.ui.viewmodels.ArtistViewModel
@@ -130,6 +132,11 @@ fun ArtistScreen(
 					artistState = artistState,
 					sharedTransitionScope = this@SharedTransitionLayout
 				)
+			},
+			bottomBar = {
+				if (Settings.shared.showBarsOnAllScreens) {
+					RootBottomBar(scrolled = viewModel.scrollState.lastScrolledForward)
+				}
 			}
 		) { contentPadding ->
 			AnimatedContent(

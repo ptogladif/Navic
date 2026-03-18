@@ -121,7 +121,7 @@ fun PlaylistsScreen(
 			}
 		},
 		bottomBar = {
-			if (!nested) {
+			if (!nested || Settings.shared.showBarsOnAllScreens) {
 				RootBottomBar(scrolled = viewModel.gridState.lastScrolledForward)
 			}
 		}
