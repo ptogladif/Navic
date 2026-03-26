@@ -115,7 +115,6 @@ val LocalSharedTransitionScope =
 @OptIn(ExperimentalMaterial3AdaptiveApi::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun App() {
-	val shareManager = rememberShareManager()
 	val platformContext = LocalPlatformContext.current
 	val uriHandler = LocalUriHandler.current
 	val ctx = rememberCtx()
@@ -123,6 +122,7 @@ fun App() {
 	val backStack = rememberNavBackStack(config, Screen.Library())
 	val imageBuilder = remember { ImageRequest.Builder(platformContext).crossfade(true) }
 	val snackbarState = remember { SnackbarHostState() }
+	val shareManager = rememberShareManager(snackbarState)
 	val density = LocalDensity.current
 
 	// todo: this should survive config changes but im lazy ykyk

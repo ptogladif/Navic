@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.toAwtImage
-import paige.navic.LocalSnackbarState
 import java.awt.Toolkit
 import java.awt.datatransfer.DataFlavor
 import java.awt.datatransfer.Transferable
@@ -49,8 +48,6 @@ actual class ShareManager(
 }
 
 @Composable
-actual fun rememberShareManager(): ShareManager {
-	val snackbarState = LocalSnackbarState.current
+actual fun rememberShareManager(snackbarState: SnackbarHostState): ShareManager {
 	return remember { ShareManager(snackbarState) }
 }
-

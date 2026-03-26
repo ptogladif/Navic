@@ -1,5 +1,6 @@
 package paige.navic.shared
 
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.ImageBitmap
@@ -12,7 +13,6 @@ import platform.Foundation.dataWithBytes
 import platform.UIKit.UIActivityViewController
 import platform.UIKit.UIApplication
 import platform.UIKit.UIDevice
-import platform.UIKit.UIImage
 import platform.UIKit.UIUserInterfaceIdiomPad
 import platform.UIKit.UIViewController
 import platform.UIKit.UIWindow
@@ -20,7 +20,9 @@ import platform.UIKit.UIWindowScene
 import platform.UIKit.popoverPresentationController
 
 @OptIn(ExperimentalForeignApi::class)
-actual class ShareManager {
+actual class ShareManager(
+	private val snackbarState: SnackbarHostState
+) {
 
 	/**
 	 * utility to try and get the top view controller
@@ -72,4 +74,5 @@ actual class ShareManager {
 }
 
 @Composable
-actual fun rememberShareManager(): ShareManager = remember { ShareManager() }
+actual fun rememberShareManager(snackbarState: SnackbarHostState): ShareManager =
+	remember { ShareManager(snackbarState) }

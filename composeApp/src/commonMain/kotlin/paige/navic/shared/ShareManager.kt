@@ -1,5 +1,6 @@
 package paige.navic.shared
 
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.ImageBitmap
 
@@ -9,4 +10,4 @@ expect class ShareManager {
 }
 
 @Composable
-expect fun rememberShareManager(): ShareManager
+expect fun rememberShareManager(snackbarState: SnackbarHostState): ShareManager

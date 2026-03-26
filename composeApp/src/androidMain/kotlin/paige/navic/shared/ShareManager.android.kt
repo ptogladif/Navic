@@ -3,6 +3,7 @@ package paige.navic.shared
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.ImageBitmap
@@ -17,6 +18,7 @@ import java.io.FileOutputStream
 
 actual class ShareManager(
 	private val context: Context,
+	private val snackbarState: SnackbarHostState,
 	private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 	actual suspend fun shareImage(bitmap: ImageBitmap, fileName: String) {
@@ -65,7 +67,7 @@ actual class ShareManager(
 }
 
 @Composable
-actual fun rememberShareManager(): ShareManager {
+actual fun rememberShareManager(snackbarState: SnackbarHostState): ShareManager {
 	val context = LocalContext.current
-	return remember { ShareManager(context) }
+	return remember { ShareManager(context, snackbarState) }
 }
